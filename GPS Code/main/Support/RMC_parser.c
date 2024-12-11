@@ -30,9 +30,9 @@
 #include <time.h>
 #include "string.h"
 #include <stdio.h>
+#include "../Headers/RMC_parser.h"
 
-
-typedef struct
+typedef struct 
 {
     char hours;
     char minutes;
@@ -53,22 +53,22 @@ typedef struct
     char varDir;
 }RMC_Struct;
 
-typedef struct
+struct RMC_Handle
 {
-    char* UTC_Time[10];
-    char* validity;
-    char* latitude[6];
-    char* latDir;
-    char* longitude[7];
-    char* longDir;
-    char* groundSpeed[5];
-    char* groundDirection[6];
-    char* date[6];
-    char* magVariation[10];
-    char* varDir;
-}RMC_Handle;
+    char UTC_Time[10];
+    char validity;
+    char latitude[6];
+    char latDir;
+    char longitude[7];
+    char longDir;
+    char groundSpeed[5];
+    char groundDirection[6];
+    char date[6];
+    char magVariation[10];
+    char varDir;
+};
 
-RMC_Struct data;
+RMC_Struct RMCdata;
 RMC_Handle sortedString;
 
 void* RMC_Parse_Time()
@@ -77,21 +77,21 @@ void* RMC_Parse_Time()
     char hours;
     char minutes;
     char seconds;
-    sscanf(timeString, "%2d%2d%2d", &hours, &minutes, &seconds);
-    data.hours = hours;
-    data.minutes = minutes;
-    data.seconds = seconds;
+    sscanf((char *) timeString, "%2d%2d%2d", &hours, &minutes, &seconds);
+    RMCdata.hours = hours;
+    RMCdata.minutes = minutes;
+    RMCdata.seconds = seconds;
 }
 
 void* RMC_Parse_Validity()
 {
     if(sortedString.validity = 'A')
     {
-        data.validity = 1;
+        RMCdata.validity = 1;
     }
     else
     {
-        data.validity = 0;
+        RMCdata.validity = 0;
     }
 }
 
@@ -101,19 +101,19 @@ void* RMC_Parse_Lat()
     char latString = sortedString.latitude;
     scanf(latString,'%2d%6f', &deg, &minutes);
 
-    data.latDeg = deg;
-    data.latMin = minutes;
+    RMCdata.latDeg = deg;
+    RMCdata.latMin = minutes;
 }
 
 void* RMC_Parse_LatDir()
 {
     if(sortedString.latDir = 'N')
     {
-        data.latDir = 1;
+        RMCdata.latDir = 1;
     }
     else if (sortedString.latDir = 'S')
     {
-        data.latDir = 0;
+        RMCdata.latDir = 0;
     }
 }
 
@@ -123,19 +123,19 @@ void* RMC_Parse_Long()
     char longString = sortedString.longitude;
     scanf(longString,'%3d%5f', &deg, &minutes);
 
-    data.longDeg = deg;
-    data.longMin = minutes;
+    RMCdata.longDeg = deg;
+    RMCdata.longMin = minutes;
 }
 
 void* RMC_Parse_LongDir()
 {
     if(sortedString.longDir = 'E')
     {
-        data.longDir = 1;
+        RMCdata.longDir = 1;
     }
     else if (sortedString.longDir = 'W')
     {
-        data.longDir = 0;
+        RMCdata.longDir = 0;
     }
 }
 
@@ -143,14 +143,14 @@ void* RMC_Parse_GroundSpeed()
 {
     float speed;
     scanf(sortedString.groundSpeed,'%f', &speed);
-    data.groundSpeed = speed;
+    RMCdata.groundSpeed = speed;
 }
 
 void RMC_Parse_GroundDir()
 {
     float deg;
     scanf(sortedString.groundDirection,'%f', &deg);
-    data.groundDirection = deg;
+    RMCdata.groundDirection = deg;
 }
 
 void* RMC_Parse_Date()
@@ -162,22 +162,22 @@ void* RMC_Parse_Date()
     char dateString = sortedString.date;
     scanf('%2d%2d%2d', &day, &month, &year);
 
-    data.year = year;
-    data.month = month;
-    data.day = day;
+    RMCdata.year = year;
+    RMCdata.month = month;
+    RMCdata.day = day;
 }
 
 void* RMC_Parse_MagneticVar()
 {
     float mag;
     scanf(sortedString.magVariation,'%f', &mag);
-    data.magVariation = mag;
+    RMCdata.magVariation = mag;
 }
 
 void RMC_Parse_VarDir()
 {
     char dir = sortedString.varDir;
-    data.varDir = dir;
+    RMCdata.varDir = dir;
 }
 
 void tokenToStruct(char* tokenArray, RMC_Handle* sortedString)
@@ -213,18 +213,19 @@ RMC_Struct parseRMC(char *nmeaSentence[])
 {
 
     RMC_Token((char *)nmeaSentence);
+    
 
-    RMC_Parse_Time;
-    RMC_Parse_Validity;
-    RMC_Parse_Lat;
-    RMC_Parse_LatDir;
-    RMC_Parse_Long;
-    RMC_Parse_LongDir;
-    RMC_Parse_GroundSpeed;
-    RMC_Parse_GroundDir;
-    RMC_Parse_Date;
+    void RMC_Parse_Time();
+    void RMC_Parse_Validity();
+    void RMC_Parse_Lat();
+    void RMC_Parse_LatDir();
+    void RMC_Parse_Long();
+    void RMC_Parse_LongDir();
+    void RMC_Parse_GroundSpeed();
+    void RMC_Parse_GroundDir();
+    void RMC_Parse_Date();
     //RMC_Parse_MagneticVar;
     //RMC_Parse_VarDir;
 
-    return data;
+    return RMCdata;
 }

@@ -3,20 +3,25 @@
 
 cmake_minimum_required(VERSION 3.5)
 
+# If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
+# existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
+# would cause a fatal error, even though it would be a no-op.
+if(NOT EXISTS "C:/Users/Dan Abidov/esp/v5.3.2/esp-idf/components/bootloader/subproject")
+  file(MAKE_DIRECTORY "C:/Users/Dan Abidov/esp/v5.3.2/esp-idf/components/bootloader/subproject")
+endif()
 file(MAKE_DIRECTORY
-  "C:/esp/v5.3.1/esp-idf/components/bootloader/subproject"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/tmp"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/src"
-  "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/tmp"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/src"
+  "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/CE420/Final Project/ESP_Tests/uartAsyncRxTx/uart_async_rxtxtasks/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/CE420/Project/CE420-Project/GPS Code/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

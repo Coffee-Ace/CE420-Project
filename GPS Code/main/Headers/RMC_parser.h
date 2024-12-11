@@ -1,5 +1,3 @@
-#include "../Support/RMC_parser.c"
-
 /*
     Author: Dan Abidov
     Project: CE 420 Final Project
@@ -9,11 +7,8 @@
     as well as a function which converts a an RMC sentence into
     the RMC struct
 */
+#include <stdint.h>
 
-
-
-
-#define typedef struct RMC_Struct;
 /**
  * @brief This struct is typdef for the information which can be extracted 
  * from an RMC sentence. 
@@ -39,7 +34,25 @@
  * 
  * @author Dan Abidov, Senior 1 at Kettering University
  */
-
+typedef struct {
+    char hours;
+    char minutes;
+    char seconds;
+    char validity;
+    char latDeg;
+    float latMin;
+    char latDir;
+    char longDeg;
+    float longMin;
+    char longDir;
+    float groundSpeed;
+    float groundDirection;
+    int year;
+    char month;
+    char day;
+    float magVariation;
+    char varDir;
+} RMC_Struct;
 
 
 /**
@@ -55,4 +68,4 @@
  * 
  * @author Dan Abidov, Senior 1 at Kettering University
  */
-#define RMC_Struct parseRMC(char *nmeaSentence[]);
+RMC_Struct parseRMC(char *nmeaSentence[]);
