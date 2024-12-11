@@ -6,7 +6,7 @@
 #include "driver/uart.h"
 #include "string.h"
 #include "driver/gpio.h"
-#include "Headers/RMC_parser.h"
+#include "RMC_parser.h"
 
 const uart_port_t uart_num = UART_NUM_2;
 //const int BLINK_GPIO = 2;
@@ -113,7 +113,7 @@ void parseTask(void *args){
 }
 
 
-void app_main(void)
+void app_main(void *args)
 {
     sentenceBuffer = xQueueCreate(10,160);
     configure_led();
