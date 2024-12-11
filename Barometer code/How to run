@@ -11,4 +11,5 @@ idf.py monitor
 
 3.)Expected Output: The monitor should display temperature and pressure readings every second:
 
-Temperature: 25.00 °C, Pressure: 1013.25 hPa
+I (1234) BMP180_APP: Temperature: 25.00 °C, Pressure: 1013.25 hPa, Altitude: 0.00 m
+
