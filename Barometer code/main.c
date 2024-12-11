@@ -15,6 +15,9 @@
 
 static const char *TAG = "BMP180_APP";
 
+// Sea level pressure in hPa (adjust according to your location)
+#define SEA_LEVEL_PRESSURE          1013.25
+
 // Function to initialize the I2C master
 void i2c_master_init(void) {
     i2c_config_t conf = {
@@ -31,17 +34,18 @@ void i2c_master_init(void) {
                                        I2C_MASTER_TX_BUF_DISABLE, 0));
 }
 
-// FreeRTOS task to read temperature and pressure
+// FreeRTOS task to read temperature, pressure, and altitude
 void bmp180_task(void *pvParameters) {
     bmp180_dev_t bmp180 = { 0 };
     ESP_ERROR_CHECK(bmp180_init_desc(&bmp180, I2C_MASTER_NUM, BMP180_I2C_ADDRESS));
     ESP_ERROR_CHECK(bmp180_init(&bmp180));
 
-    float temperature, pressure;
+    float temperature, pressure, altitude;
 
     while (1) {
         if (bmp180_measure(&bmp180, &temperature, &pressure) == ESP_OK) {
-            ESP_LOGI(TAG, "Temperature: %.2f °C, Pressure: %.2f hPa", temperature, pressure);
+            altitude = bmp180_calculate_altitude(pressure, SEA_LEVEL_PRESSURE);
+            ESP_LOGI(TAG, "Temperature: %.2f °C, Pressure: %.2f hPa, Altitude: %.2f m", temperature, pressure, altitude);
         } else {
             ESP_LOGE(TAG, "Failed to read BMP180 sensor.");
         }
