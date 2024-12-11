@@ -1,0 +1,21 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.portWin": "COM12",
+  "files.associations": {
+    "string.h": "c",
+    "freertos.h": "c",
+    "*.tcc": "c",
+    "string": "c",
+    "format": "c",
+    "chrono": "c",
+    "variant": "c",
+    "condition_variable": "cpp",
+    "ctime": "cpp",
+    "mutex": "cpp",
+    "esp_system.h": "c",
+    "esp_log.h": "c",
+    "rmc_parser.c": "cpp"
+  },
+  "idf.adapterTargetName": "esp32",
+  "idf.flashType": "UART"
+}
