@@ -101,11 +101,13 @@ void parseTask(void *args){
         if (!xQueueIsQueueEmptyFromISR(sentenceBuffer))
         {
             xQueueReceive(sentenceBuffer,&nmeaSentence,portMUX_NO_TIMEOUT);
-            parsedRMC = parseRMC(&nmeaSenctence);
+            char* sentenceP = nmeaSentence;
+            parsedRMC = parseRMC(&sentenceP);
 
-            ESP_LOGI("Parsed\n", "\tLatitude: %d deg %d%d\r\n", parsedRMC.latDeg, parsedRMC.latMin, parsedRMC.larDir);
-            ESP_LOGI("\tSpeed: %d knots %d degrees\r\n", parsedRMC.groundSpeed, parsedRMC.groundDirection);
-            ESP_LOGI("\tTime: %d:%d:%d\r\n", parsedRMC.hours, parsedRMC.min, parsedRMC.sec);
+            ESP_LOGI("Parsed\n", "\tLatitude: %d deg %f%d\r\n", parsedRMC.latDeg, parsedRMC.latMin, parsedRMC.latDir);
+            ESP_LOGI("\tLongitude: ", "%d deg %f%d\r\n", parsedRMC.longDeg, parsedRMC.longMin, parsedRMC.longDir);
+            ESP_LOGI("\tSpeed: ", "%f knots %f degrees\r\n", parsedRMC.groundSpeed, parsedRMC.groundDirection);
+            ESP_LOGI("\tTime: ", "%d:%d:%d\r\n", parsedRMC.hours, parsedRMC.minutes, parsedRMC.seconds);
         }
     }
 }
@@ -116,6 +118,6 @@ void app_main(void)
     sentenceBuffer = xQueueCreate(10,160);
     configure_led();
     initUART();
-    xTaskCreate(blinkTask, "uart_tx_task", 1024 * 4, NULL, configMAX_PRIORITIES - 1, NULL);
-    xTaskCreate(rxTask, "uart_tx_task", 1024 * 4, NULL, configMAX_PRIORITIES - 1, NULL);
+    xTaskCreate(rxTask, "uart_rx_task", 1024 * 4, NULL, configMAX_PRIORITIES - 1, NULL);
+    xTaskCreate(parseTask, "uart_parsing_task", 1024 * 4, NULL, configMAX_PRIORITIES - 1, NULL);
 }

@@ -27,205 +27,45 @@
 
     Source :https://www.sparkfun.com/datasheets/GPS/NMEA%20Reference%20Manual-Rev2.1-Dec07.pdf
 */
-#include <time.h>
-#include "string.h"
+#include <string.h>
 #include <stdio.h>
 #include "../Headers/RMC_parser.h"
 
-typedef struct 
-{
-    char hours;
-    char minutes;
-    char seconds;
-    char validity;
-    char latDeg;
-    float latMin;
-    char latDir;
-    char longDeg;
-    float longMin;
-    char longDir;
-    float groundSpeed;
-    float groundDirection;
-    int year;
-    char month;
-    char day;
-    float magVariation;
-    char varDir;
-}RMC_Struct;
-
-struct RMC_Handle
-{
-    char* UTC_Time[10];
-    char* validity;
-    char* latitude[6];
-    char* latDir;
-    char* longitude[7];
-    char* longDir;
-    char* groundSpeed[5];
-    char* groundDirection[6];
-    char* date[6];
-    char* magVariation[10];
-    char* varDir;
-};
-
-RMC_Struct RMCdata;
-RMC_Handle sortedString;
-
-void RMC_Parse_Time()
-{
-    char timeString = sortedString.UTC_Time;
-    char hours;
-    char minutes;
-    char seconds;
-    sscanf((char *) timeString, "%2d%2d%2d", &hours, &minutes, &seconds);
-    RMCdata.hours = hours;
-    RMCdata.minutes = minutes;
-    RMCdata.seconds = seconds;
-}
-
-void RMC_Parse_Validity()
-{
-    if(sortedString.validity = 'A')
-    {
-        RMCdata.validity = 1;
-    }
-    else
-    {
-        RMCdata.validity = 0;
-    }
-}
-
-void RMC_Parse_Lat()
-{
-    char deg, minutes;
-    char latString = sortedString.latitude;
-    scanf(latString,'%2d%6f', &deg, &minutes);
-
-    RMCdata.latDeg = deg;
-    RMCdata.latMin = minutes;
-}
-
-void RMC_Parse_LatDir()
-{
-    if(sortedString.latDir = 'N')
-    {
-        RMCdata.latDir = 1;
-    }
-    else if (sortedString.latDir = 'S')
-    {
-        RMCdata.latDir = 0;
-    }
-}
-
-void RMC_Parse_Long()
-{
-    char deg, minutes;
-    char longString = sortedString.longitude;
-    scanf(longString,'%3d%5f', &deg, &minutes);
-
-    RMCdata.longDeg = deg;
-    RMCdata.longMin = minutes;
-}
-
-void RMC_Parse_LongDir()
-{
-    if(sortedString.longDir = 'E')
-    {
-        RMCdata.longDir = 1;
-    }
-    else if (sortedString.longDir = 'W')
-    {
-        RMCdata.longDir = 0;
-    }
-}
-
-void RMC_Parse_GroundSpeed()
-{
-    float speed;
-    scanf(sortedString.groundSpeed,'%f', &speed);
-    RMCdata.groundSpeed = speed;
-}
-
-void RMC_Parse_GroundDir()
-{
-    float deg;
-    scanf(sortedString.groundDirection,'%f', &deg);
-    RMCdata.groundDirection = deg;
-}
-
-void RMC_Parse_Date()
-{
-    int year;
-    char month;
-    char day;
-
-    char dateString = sortedString.date;
-    scanf('%2d%2d%2d', &day, &month, &year);
-
-    RMCdata.year = year;
-    RMCdata.month = month;
-    RMCdata.day = day;
-}
-
-void RMC_Parse_MagneticVar()
-{
-    float mag;
-    scanf(sortedString.magVariation,'%f', &mag);
-    RMCdata.magVariation = mag;
-}
-
-void RMC_Parse_VarDir()
-{
-    char dir = sortedString.varDir;
-    RMCdata.varDir = dir;
-}
-
-void tokenToStruct(char* tokenArray, RMC_Handle* sortedString)
-{
-    strcpy(tokenArray[1], (sortedString->UTC_Time));
-    strcpy(tokenArray[2], (sortedString->validity));
-    strcpy(tokenArray[3], (sortedString->latitude));
-    strcpy(tokenArray[4], (sortedString->latDir));
-    strcpy(tokenArray[5], (sortedString->longitude));
-    strcpy(tokenArray[6], (sortedString->longDir));
-    strcpy(tokenArray[7], (sortedString->groundSpeed));
-    strcpy(tokenArray[8], (sortedString->groundDirection));
-    strcpy(tokenArray[9], (sortedString->date));
-    strcpy(tokenArray[10], (sortedString->magVariation));
-    strcpy(tokenArray[11], (sortedString->varDir));
-}
-
-char* RMC_Token(char nmeaSentence[])
-{
-    //char nmeaSentence[120] = "$GPRMC,161229.487,A,3723.2475,N,12158.3416,W,0.13,309.62,120598, ,*10";
+// Function to tokenize an NMEA sentence and parse the RMC data
+RMC_Struct parseRMC(char *nmeaSentence) {
+    RMC_Struct RMCdata = {0};  // Initialize struct with zero values
     char *tokenArray[13] = {NULL};
     int i = 0;
 
-    for (char *nmeaTokens = strtok(nmeaSentence, ","); nmeaTokens != NULL; nmeaTokens = strtok(NULL, ",")) {
-        tokenArray[i] = nmeaTokens; // Store the token itself
-        printf("The resultant token is: %s\n", tokenArray[i]); // Print the token
-        i++;
+    // Tokenize the NMEA sentence
+    for (char *token = strtok((char *)nmeaSentence, ","); token != NULL; token = strtok(NULL, ",")) {
+        if (i < 13) {
+            tokenArray[i++] = token;
+        }
     }
-    tokenToStruct((char*) tokenArray, &sortedString);
-}
 
-RMC_Struct parseRMC(char *nmeaSentence) 
-{
-
-    RMC_Token((char *)nmeaSentence);
+    // Parse each field
+    sscanf(tokenArray[1], "%2hhd%2hhd%2hhd", &RMCdata.hours, &RMCdata.minutes, &RMCdata.seconds);
+    RMCdata.validity = (tokenArray[2][0] == 'A') ? 1 : 0;
     
+    sscanf(tokenArray[3], "%2hhd%f", &RMCdata.latDeg, &RMCdata.latMin);
+    RMCdata.latDir = (tokenArray[4][0] == 'N') ? 1 : 0;
 
-    void RMC_Parse_Time();
-    void RMC_Parse_Validity();
-    void RMC_Parse_Lat();
-    void RMC_Parse_LatDir();
-    void RMC_Parse_Long();
-    void RMC_Parse_LongDir();
-    void RMC_Parse_GroundSpeed();
-    void RMC_Parse_GroundDir();
-    void RMC_Parse_Date();
-    //RMC_Parse_MagneticVar;
-    //RMC_Parse_VarDir;
+    sscanf(tokenArray[5], "%3hhd%f", &RMCdata.longDeg, &RMCdata.longMin);
+    RMCdata.longDir = (tokenArray[6][0] == 'E') ? 1 : 0;
+
+    sscanf(tokenArray[7], "%f", &RMCdata.groundSpeed);
+    sscanf(tokenArray[8], "%f", &RMCdata.groundDirection);
+
+    sscanf(tokenArray[9], "%2hhd%2hhd%2d", &RMCdata.day, &RMCdata.month, &RMCdata.year);
+
+    if (tokenArray[10] && strlen(tokenArray[10]) > 0) {
+        sscanf(tokenArray[10], "%f", &RMCdata.magVariation);
+    }
+    if (tokenArray[11] && strlen(tokenArray[11]) > 0) {
+        RMCdata.varDir = tokenArray[11][0];
+    }
 
     return RMCdata;
 }
+

@@ -74,4 +74,4 @@ typedef struct {
  */
 RMC_Struct parseRMC(char *nmeaSentence[]);
 
-#endif RMC_PARSER_H
+#endif

@@ -154,7 +154,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/uart_async_rxtxtasks
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/RMC_Receiver
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -210,7 +210,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=uart_async_rxtxtasks
+CMAKE_PROJECT_NAME:STATIC=RMC_Receiver
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=3.6.2
@@ -349,6 +349,15 @@ Mbed TLS_SOURCE_DIR:STATIC=C:/Users/Dan Abidov/esp/v5.3.2/esp-idf/components/mbe
 //No help, variable specified on the command line.
 PYTHON_DEPS_CHECKED:UNINITIALIZED=1
 
+//Value Computed by CMake
+RMC_Receiver_BINARY_DIR:STATIC=C:/CE420/Project/CE420-Project/GPS Code/build
+
+//Value Computed by CMake
+RMC_Receiver_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+RMC_Receiver_SOURCE_DIR:STATIC=C:/CE420/Project/CE420-Project/GPS Code
+
 //No help, variable specified on the command line.
 SDKCONFIG:UNINITIALIZED=c:\CE420\Project\CE420-Project\GPS Code\sdkconfig
 
@@ -384,15 +393,6 @@ mbedx509_LIB_DEPENDS:STATIC=general;__idf_cxx;general;__idf_newlib;general;__idf
 
 //Dependencies for the target
 p256m_LIB_DEPENDS:STATIC=general;__idf_cxx;general;__idf_newlib;general;__idf_freertos;general;__idf_esp_hw_support;general;__idf_heap;general;__idf_log;general;__idf_soc;general;__idf_hal;general;__idf_esp_rom;general;__idf_esp_common;general;__idf_esp_system;general;__idf_xtensa;
-
-//Value Computed by CMake
-uart_async_rxtxtasks_BINARY_DIR:STATIC=C:/CE420/Project/CE420-Project/GPS Code/build
-
-//Value Computed by CMake
-uart_async_rxtxtasks_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-uart_async_rxtxtasks_SOURCE_DIR:STATIC=C:/CE420/Project/CE420-Project/GPS Code
 
 
 ########################
@@ -596,7 +596,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/uart_async_rxtxtasks
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/RMC_Receiver
 //Compiler reason failure
 _Python3_Compiler_REASON_FAILURE:INTERNAL=
 //Development reason failure

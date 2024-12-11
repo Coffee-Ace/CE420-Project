@@ -10,7 +10,7 @@ C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/monitor.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/flash.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/encrypted-flash.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/_project_elf_src.dir
-C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/uart_async_rxtxtasks.elf.dir
+C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/RMC_Receiver.elf.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/size.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/size-files.dir
 C:/CE420/Project/CE420-Project/GPS Code/build/CMakeFiles/size-components.dir
