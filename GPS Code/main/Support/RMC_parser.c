@@ -71,7 +71,7 @@ struct RMC_Handle
 RMC_Struct RMCdata;
 RMC_Handle sortedString;
 
-void* RMC_Parse_Time()
+void RMC_Parse_Time()
 {
     char timeString = sortedString.UTC_Time;
     char hours;
@@ -83,7 +83,7 @@ void* RMC_Parse_Time()
     RMCdata.seconds = seconds;
 }
 
-void* RMC_Parse_Validity()
+void RMC_Parse_Validity()
 {
     if(sortedString.validity = 'A')
     {
@@ -95,7 +95,7 @@ void* RMC_Parse_Validity()
     }
 }
 
-void* RMC_Parse_Lat()
+void RMC_Parse_Lat()
 {
     char deg, minutes;
     char latString = sortedString.latitude;
@@ -105,7 +105,7 @@ void* RMC_Parse_Lat()
     RMCdata.latMin = minutes;
 }
 
-void* RMC_Parse_LatDir()
+void RMC_Parse_LatDir()
 {
     if(sortedString.latDir = 'N')
     {
@@ -117,7 +117,7 @@ void* RMC_Parse_LatDir()
     }
 }
 
-void* RMC_Parse_Long()
+void RMC_Parse_Long()
 {
     char deg, minutes;
     char longString = sortedString.longitude;
@@ -127,7 +127,7 @@ void* RMC_Parse_Long()
     RMCdata.longMin = minutes;
 }
 
-void* RMC_Parse_LongDir()
+void RMC_Parse_LongDir()
 {
     if(sortedString.longDir = 'E')
     {
@@ -139,7 +139,7 @@ void* RMC_Parse_LongDir()
     }
 }
 
-void* RMC_Parse_GroundSpeed()
+void RMC_Parse_GroundSpeed()
 {
     float speed;
     scanf(sortedString.groundSpeed,'%f', &speed);
@@ -153,7 +153,7 @@ void RMC_Parse_GroundDir()
     RMCdata.groundDirection = deg;
 }
 
-void* RMC_Parse_Date()
+void RMC_Parse_Date()
 {
     int year;
     char month;
@@ -167,7 +167,7 @@ void* RMC_Parse_Date()
     RMCdata.day = day;
 }
 
-void* RMC_Parse_MagneticVar()
+void RMC_Parse_MagneticVar()
 {
     float mag;
     scanf(sortedString.magVariation,'%f', &mag);
@@ -209,7 +209,7 @@ char* RMC_Token(char nmeaSentence[])
     tokenToStruct((char*) tokenArray, &sortedString);
 }
 
-RMC_Struct parseRMC(char *nmeaSentence[])
+RMC_Struct parseRMC(char *nmeaSentence) 
 {
 
     RMC_Token((char *)nmeaSentence);

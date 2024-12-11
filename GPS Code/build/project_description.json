@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "uart_async_rxtxtasks",
-    "project_version":    "d30063f-dirty",
+    "project_version":    "5ec3de0-dirty",
     "project_path":       "C:/CE420/Project/CE420-Project/GPS Code",
     "idf_path":           "C:/Users/Dan Abidov/esp/v5.3.2/esp-idf",
     "build_dir":          "C:/CE420/Project/CE420-Project/GPS Code/build",
