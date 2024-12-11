@@ -1,0 +1,10 @@
+bmp180_project/
+├── CMakeLists.txt
+├── main/
+│   ├── main.c
+│   └── mainCMakeLists.txt
+└── components/
+    └── bmp180/
+        ├── bmp180.c
+        ├── bmp180.h
+        └── bmp180CMakeLists.txt
