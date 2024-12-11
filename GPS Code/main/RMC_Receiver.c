@@ -96,7 +96,7 @@ void blinkTask(void *args){
 
 void parseTask(void *args){
     char nmeaSentence[160];
-    RMC_Struct RMC_data;
+    RMC_Struct parsedRMC;
     while(1){
         if (!xQueueIsQueueEmptyFromISR(sentenceBuffer))
         {

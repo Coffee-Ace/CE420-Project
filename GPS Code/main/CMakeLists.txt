@@ -1,2 +1,2 @@
-idf_component_register(SRCS "uart_async_rxtxtasks_main.c"
+idf_component_register(SRCS "RMC_Receiver.c"
                     INCLUDE_DIRS ".")

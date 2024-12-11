@@ -55,17 +55,17 @@ typedef struct
 
 struct RMC_Handle
 {
-    char UTC_Time[10];
-    char validity;
-    char latitude[6];
-    char latDir;
-    char longitude[7];
-    char longDir;
-    char groundSpeed[5];
-    char groundDirection[6];
-    char date[6];
-    char magVariation[10];
-    char varDir;
+    char* UTC_Time[10];
+    char* validity;
+    char* latitude[6];
+    char* latDir;
+    char* longitude[7];
+    char* longDir;
+    char* groundSpeed[5];
+    char* groundDirection[6];
+    char* date[6];
+    char* magVariation[10];
+    char* varDir;
 };
 
 RMC_Struct RMCdata;

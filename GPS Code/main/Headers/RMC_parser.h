@@ -9,6 +9,10 @@
 */
 #include <stdint.h>
 
+
+#ifndef RMC_PARSER_H
+#define RMC_PARSER_H
+
 /**
  * @brief This struct is typdef for the information which can be extracted 
  * from an RMC sentence. 
@@ -69,3 +73,5 @@ typedef struct {
  * @author Dan Abidov, Senior 1 at Kettering University
  */
 RMC_Struct parseRMC(char *nmeaSentence[]);
+
+#endif RMC_PARSER_H

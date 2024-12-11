@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "uart_async_rxtxtasks",
-    "project_version":    "7fb8b17-dirty",
+    "project_version":    "d30063f-dirty",
     "project_path":       "C:/CE420/Project/CE420-Project/GPS Code",
     "idf_path":           "C:/Users/Dan Abidov/esp/v5.3.2/esp-idf",
     "build_dir":          "C:/CE420/Project/CE420-Project/GPS Code/build",
@@ -1180,7 +1180,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/CE420/Project/CE420-Project/GPS Code/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/CE420/Project/CE420-Project/GPS Code/main/uart_async_rxtxtasks_main.c" ],
+            "sources": [ "C:/CE420/Project/CE420-Project/GPS Code/main/RMC_Receiver.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
