@@ -1,36 +1,5 @@
-Hardware Requirements
-ESP32 Development Board
-BMP180 Sensor Module
-Jumper Wires
-Breadboard (optional)
-Software Requirements
-ESP-IDF (Espressif IoT Development Framework) installed on your system.
-Installation guide: ESP-IDF Installation
 
-BMP180        ESP32
-VCC  -------- 3.3V
-GND  -------- GND
-SDA  -------- GPIO 21
-SCL  -------- GPIO 22
-
-
-Project Structure:
-bmp180_project/
-│-- CMakeLists.txt
-│
-├── components/
-│   └── bmp180/
-│       ├── CMakeLists.txt
-│       ├── bmp180.c
-│       └── bmp180.h
-│
-└── main/
-    ├── CMakeLists.txt
-    ├── tester.c
-    └── barometer.c
-
-
-    
+   
 Instructions on How to Use the BMP180 Program with FreeRTOS
 This guide will help you understand how to use the BMP180 sensor program with FreeRTOS on an ESP32. The program reads temperature, pressure, and altitude data from the BMP180 sensor and communicates via I2C. The data is sent through a FreeRTOS queue and printed by the tester task.
 
