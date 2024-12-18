@@ -1,3 +1,4 @@
+//last changed by Anthony Malone 12/18/2024 12:56pm
 // barometer main code
 #include <stdio.h>
 #include <stddef.h>
@@ -31,7 +32,7 @@ i2c_config_t conf = {
 };
 
 
-void bmp180_task(void *pvParameter)
+/**void bmp180_task(void *pvParameter)
 {
     while(1) {
         esp_err_t err;
@@ -63,7 +64,7 @@ void bmp180_task(void *pvParameter)
         // Delay before next readings (1 second)
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
-}
+}*/
 
 void app_main()
 {
