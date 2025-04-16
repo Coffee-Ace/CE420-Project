@@ -3,19 +3,20 @@
         {
             "name": "ESP-IDF",
             "compilerPath": "${config:idf.toolsPathWin}\\tools\\xtensa-esp-elf\\esp-13.2.0_20240530\\xtensa-esp-elf\\bin\\xtensa-esp32-elf-gcc.exe",
-            "compileCommands": "${config:idf.buildPath}/compile_commands.json",
+            "compileCommands": "${config:idf.buildPathWin}/compile_commands.json",
             "includePath": [
-                "${config:idf.espIdfPath}/components/**",
                 "${config:idf.espIdfPathWin}/components/**",
                 "${workspaceFolder}/**",
                 "C:/esp/**",
-                "C:/CE420/**"
-            ],
+                "C:/esp/v5.3.2/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/FreeRTOS/**",
+                "C:/CE420/**",
+                "C:/esp/v5.3.2/esp-idf/components/freertos/FreeRTOS-Kernel-SMP/portable/linux/include/freertos/**"],
             "browse": {
                 "path": [
-                    "${config:idf.espIdfPath}/components",
+                    "${config:idf.espIdfPathWin}/components/**",
                     "${config:idf.espIdfPathWin}/components",
-                    "${workspaceFolder}"
+                    "${workspaceFolder}",
+                    "C:/esp/**"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }

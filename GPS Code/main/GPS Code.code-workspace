@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"string.h": "c",
+			"freertos.h": "c",
+			"*.tcc": "c",
+			"string": "c",
+			"format": "c",
+			"chrono": "c",
+			"variant": "c",
+			"condition_variable": "cpp",
+			"ctime": "cpp",
+			"mutex": "cpp",
+			"esp_system.h": "c",
+			"esp_log.h": "c",
+			"rmc_parser.c": "cpp",
+			"stdint.h": "c",
+			"task.h": "c",
+			"esp_mac.h": "c",
+			"sdkconfig.h": "c"
+		},
+		"python.terminal.activateEnvInCurrentTerminal": true, 
+		"python.terminal.launchArgs": [
+			"-path", "C:/esp/v5.3.2/esp-idf/export.bat"
+		],
+	}
+}

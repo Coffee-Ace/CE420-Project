@@ -14,8 +14,14 @@
     "mutex": "cpp",
     "esp_system.h": "c",
     "esp_log.h": "c",
-    "rmc_parser.c": "cpp"
+    "rmc_parser.c": "cpp",
+    "stdint.h": "c",
+    "task.h": "c",
+    "esp_mac.h": "c",
+    "sdkconfig.h": "c"
   },
   "idf.adapterTargetName": "esp32",
-  "idf.flashType": "UART"
+  "idf.flashType": "UART",
+  "idf.espIdfPathWin": "C:\\esp\\v5.3.2\\esp-idf",
+  "idf.toolsPathWin": "C:\\esp\\.espressif"
 }

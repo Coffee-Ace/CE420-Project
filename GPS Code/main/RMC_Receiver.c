@@ -1,12 +1,16 @@
-#include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
 #include "esp_log.h"
 #include "esp_mac.h"
-#include "driver/uart.h"
 #include "string.h"
 #include "driver/gpio.h"
 #include "RMC_parser.h"
+#include "freertos/queue.h"
+#include "freertos/semphr.h"
+#include "freertos/FreeRTOS.h"
+#include "driver/uart.h"
+
+
 
 const uart_port_t uart_num = UART_NUM_2;
 //const int BLINK_GPIO = 2;
